@@ -27,8 +27,8 @@ describe Game do
       expect(game.determine_winner).to eq(player_1)
     end
 
-    it 'should return the player who is not above 21 if neither have blackjack' do
-      allow(player_2).to receive(:add_hand).and_return(14)
+    it 'should return the player who is not above if neither have blackjack' do
+      allow(player_2).to receive(:add_hand).and_return(17)
       allow(player_1).to receive(:add_hand).and_return(22)
       expect(game.determine_winner).to eq(player_2)
     end

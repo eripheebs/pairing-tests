@@ -24,7 +24,7 @@ class Game
     return player1 if blackjack?(player1)
     return player2 if blackjack?(player2)
     return "nobody, it's a draw" if draw?(player1, player2)
-    return player1 if lower?(player1, player2)
+    return player1 if higher?(player1, player2) && lower_than_blackjack(player1)
     return player2
   end
 
@@ -36,8 +36,12 @@ class Game
     end
   end
 
-  def lower?(player, player2)
-    score_hand(player) < score_hand(player2)
+  def lower_than_blackjack(player)
+    score_hand(player) < BLACKJACK
+  end
+
+  def higher?(player, player2)
+    score_hand(player) > score_hand(player2)
   end
 
   def draw?(player, player2)
